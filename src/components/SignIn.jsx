@@ -62,7 +62,7 @@ const InputBox = ({ formik, inputType }) => {
                 onChangeText={formik.handleChange(inputType)}
             ></TextInput>
             {formik.touched[inputType] && formik.errors[inputType] && (
-                <Text color={color}>{formik.errors[inputType]}</Text>
+                <Text color="errorRed">{formik.errors[inputType]}</Text>
             )}
         </View>
     );
