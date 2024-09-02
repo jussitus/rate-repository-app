@@ -6,9 +6,10 @@ const useRepositories = () => {
     });
 
     if (loading || error) {
-        return [];
+        return { loading, error };
     }
-    return data;
+    const repositories = data.repositories;
+    return { loading, error, repositories };
 };
 
 export default useRepositories;
