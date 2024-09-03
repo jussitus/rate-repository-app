@@ -60,7 +60,7 @@ const RepositoryItem = ({ item, singleView, navigate }) => {
                 </View>
                 <RepositoryItemStats item={item} />
                 {singleView && (
-                    <Pressable onPress={() => Linking.openURL(item.url)}>
+                    <Pressable onPress={() => Linking.openURL(singleView.url)}>
                         <View style={styles.github}>
                             <Text
                                 color="white"
