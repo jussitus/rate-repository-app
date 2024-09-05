@@ -14,12 +14,13 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-    const me = useMe();
+    const me = useMe(false);
     return (
         <View style={styles.container}>
             <ScrollView horizontal>
                 <AppBarTab link="/" text="Repositories" />
                 {me && <AppBarTab link="/review" text="Create a review" />}
+                {me && <AppBarTab link="/myreviews" text="My reviews" />}
                 {!me && <AppBarTab link="/signin" text="Sign in" />}
                 {!me && <AppBarTab link="/signup" text="Sign up" />}
                 {me && <AppBarTab link="/signout" text="Sign out" />}
