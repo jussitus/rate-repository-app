@@ -121,10 +121,8 @@ const UserReviewItem = ({ review, navigate, deleteReview }) => {
     );
 };
 const UserReviews = () => {
-    const me = useMe(true);
-    if (!me) {
-        return <Text>Loading... or error.</Text>;
-    }
+    const { me } = useMe(true);
+    const reviews = me ? me.reviews.edges.map((edge) => edge.node) : [];
     const navigate = useNavigate();
     const [deleteReview] = useDeleteReview();
     const renderItem = ({ item }) => {
@@ -136,7 +134,6 @@ const UserReviews = () => {
             />
         );
     };
-    const reviews = me.reviews.edges.map((edge) => edge.node);
     return (
         <FlatList
             data={reviews}

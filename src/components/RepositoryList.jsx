@@ -58,6 +58,7 @@ export const RepositoryListContainer = ({
     setOrder,
     searchword,
     setSearchword,
+    onEndReach,
 }) => {
     const repositoryNodes = repositories
         ? repositories.edges.map((edge) => edge.node)
@@ -85,6 +86,7 @@ export const RepositoryListContainer = ({
             ItemSeparatorComponent={ItemSeparator}
             renderItem={renderItem}
             ListHeaderComponent={repositoryHeader()}
+            onEndReached={onEndReach}
         />
     );
 };
@@ -96,7 +98,15 @@ const RepositoryList = () => {
     });
     const [searchword, setSearchword] = useState('');
     const [debouncedSearchword] = useDebounce(searchword, 500);
-    const { repositories } = useRepositories(order, debouncedSearchword);
+    const { repositories, fetchMore } = useRepositories({
+        order,
+        searchKeyword: debouncedSearchword,
+        first: 8,
+    });
+
+    const onEndReach = () => {
+        fetchMore();
+    };
     return (
         <RepositoryListContainer
             repositories={repositories}
@@ -104,6 +114,7 @@ const RepositoryList = () => {
             setOrder={setOrder}
             searchword={searchword}
             setSearchword={setSearchword}
+            onEndReach={onEndReach}
         />
     );
 };

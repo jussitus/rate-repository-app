@@ -6,11 +6,7 @@ const useRepository = (id) => {
         variables: { repositoryId: id },
     });
 
-    if (loading || error) {
-        return { loading, error };
-    }
-    const repository = data.repository;
-    return { loading, error, repository };
+    return { loading, error, repository: data?.repository };
 };
 
 export default useRepository;

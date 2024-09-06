@@ -4,10 +4,7 @@ const useMe = (includeReviews) => {
     const { loading, error, data } = useQuery(ME, {
         variables: { includeReviews },
     });
-    if (loading || error) {
-        return null;
-    }
-    return data.me;
+    return { loading, error, me: data?.me };
 };
 
 export default useMe;

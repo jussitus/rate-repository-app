@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
 });
 
 const AppBar = () => {
-    const me = useMe(false);
+    const { me } = useMe(false);
     return (
         <View style={styles.container}>
             <ScrollView horizontal>
