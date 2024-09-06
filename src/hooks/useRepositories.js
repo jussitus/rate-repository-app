@@ -15,7 +15,6 @@ const useRepositories = ({ order, searchKeyword, first }) => {
         if (!canFetchMore) {
             return;
         }
-        console.log('here');
         fetchMore({
             variables: {
                 after: data.repositories.pageInfo.endCursor,

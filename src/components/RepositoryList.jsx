@@ -102,7 +102,7 @@ const RepositoryList = () => {
     const { repositories, fetchMore } = useRepositories({
         order,
         searchKeyword: debouncedSearchword,
-        first: 3,
+        first: 8,
     });
 
     const onEndReach = () => {

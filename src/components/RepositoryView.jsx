@@ -67,7 +67,11 @@ const ReviewItem = ({ review }) => {
 };
 const RepositoryView = () => {
     const { id } = useParams();
-    const { loading, error, repository } = useRepository(id);
+    console.log(id);
+    const { loading, error, repository, fetchMore } = useRepository({
+        repositoryId: id,
+        first: 1,
+    });
     if (loading || error) {
         return <Text>Loading... Or error.</Text>;
     }
@@ -79,6 +83,7 @@ const RepositoryView = () => {
             keyExtractor={({ id }) => id}
             ListHeaderComponent={() => <RepositoryInfo item={repository} />}
             ItemSeparatorComponent={ItemSeparator}
+            onEndReached={() => fetchMore()}
         />
     );
 };
