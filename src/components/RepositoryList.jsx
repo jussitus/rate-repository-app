@@ -87,6 +87,7 @@ export const RepositoryListContainer = ({
             renderItem={renderItem}
             ListHeaderComponent={repositoryHeader()}
             onEndReached={onEndReach}
+            onEndReachedThreshold={0.5}
         />
     );
 };
@@ -101,7 +102,7 @@ const RepositoryList = () => {
     const { repositories, fetchMore } = useRepositories({
         order,
         searchKeyword: debouncedSearchword,
-        first: 8,
+        first: 3,
     });
 
     const onEndReach = () => {

@@ -5,6 +5,7 @@ const useRepositories = ({ order, searchKeyword, first }) => {
         GET_REPOSITORIES,
         {
             variables: { ...order, searchKeyword, first },
+            fetchPolicy: 'cache-and-network',
         }
     );
     const handleFetchMore = () => {
@@ -18,7 +19,9 @@ const useRepositories = ({ order, searchKeyword, first }) => {
         fetchMore({
             variables: {
                 after: data.repositories.pageInfo.endCursor,
-                variables: { ...order, searchKeyword, first },
+                ...order,
+                searchKeyword,
+                first,
             },
         });
     };
